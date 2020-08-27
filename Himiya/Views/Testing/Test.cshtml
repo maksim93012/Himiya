@@ -1,0 +1,168 @@
+﻿@model Nullable<System.Int32>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <title>Тест</title>
+	<link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon.png")"> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="@Url.Content("~/Content/css/test.css")">
+	<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Scripts/Test.lib.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Scripts/testing.js")"></script>
+  </head>
+  <body>
+	  <script>
+		  var urlData = "@Url.Action("DataTest", new { id=Model})";
+		  var urlWriteRes = "@Url.Action("DataResult", "Testing")";
+	  </script>
+  <div class="wrapper">
+    <header>
+		<h1 class="test-name">
+			<img src="@Url.Content("~/Content/test-ico.svg")"><span id="nameOfTest">Без імені</span>
+		</h1>
+		<div class="timer">
+			<img src="@Url.Content("~/Content/clock-ico.svg")"><span id="time">--:--</span>
+		</div>
+		<div class="exit">
+			<a href="@Url.Action("Index")"><img src="@Url.Content("~/Content/exit-ico.svg")"></a>
+		</div>
+	</header>
+	<div class="question-board">
+		<figure><img src="@Url.Content("~/Content/questIcon.svg")" id="questIcon"></figure>
+		<div id="questText"><span style="font-size: small;">loading...</span></span></div>
+		<div class="quest-info">Питання: <span id="questCounter">0 з 0</span></div>
+	</div>
+	<div class="in-answer">
+		<div class="input-text"><span id="inpt"  data-empty="true"><span id="placeHolder">Дайте відповідь</span></span></div><button id="enterBtn">Ввести</button>
+	</div>
+	
+	<div class="keyboard">
+		<table id="eng_layout">
+			<tr>
+				<td onclick="KeyStrokeHandler(this);">1<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">2<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">3<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">4<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">5<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">6<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">7<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">8<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">9<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">0<div></div></td>
+			</tr>
+			<tr class="upperable">
+				<td onclick="KeyStrokeHandler(this);">q<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">w<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">e<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">r<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">t<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">y<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">u<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">i<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">o<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">p<div></div></td>
+			</tr>
+			<tr  class="upperable">
+				<td onclick="KeyStrokeHandler(this);">a<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">s<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">d<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">f<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">g<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">h<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">j<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">k<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">l<div></div></td>
+				<td id="backspaceKey1" onclick="BackSpace();">&larr;</td>
+			</tr>
+			<tr  class="upperable">
+				<td id="shiftKey1" class="special-btn" onclick="ToggleCaseAll();" data-pressed="false">&#8657;</td>
+				<td onclick="KeyStrokeHandler(this);">z<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">x<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">c<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">v<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">b<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">n<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">m<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">(<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">)<div></div></td>
+			</tr>
+			<tr>
+				<td colspan="2" id="ukrKey" class="special-btn left-bottom" onclick="UkrLangOn();">UK</td>
+				<td colspan="6" onclick="Space();">space</td>
+				<td colspan="2" id="subKey1"  class="special-btn right-bottom" onclick="SubToggle();" data-pressed="false">X<sub>n</sub></td>
+			</tr>
+		</table>
+		
+		<table id="ukr_layout">
+			<tr>
+				<td onclick="KeyStrokeHandler(this);">1<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">2<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">3<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">4<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">5<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">6<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">7<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">8<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">9<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">0<div></div></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="upperable">
+				<td onclick="KeyStrokeHandler(this);">й<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">ц<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">у<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">к<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">е<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">н<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">г<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">ш<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">щ<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">з<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">х<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">ї<div></div></td>
+			</tr>
+			<tr  class="upperable">
+				<td onclick="KeyStrokeHandler(this);">ф<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">і<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">в<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">а<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">п<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">р<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">о<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">л<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">д<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">ж<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">є<div></div></td>
+				<td id="backspaceKey2" onclick="BackSpace();">&larr;</td>
+			</tr>
+			<tr  class="upperable">
+				<td id="shiftKey2" class="special-btn" onclick="ToggleCaseAll();" data-pressed="false">&#8657;</td>
+				<td onclick="KeyStrokeHandler(this);">я<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">ч<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">с<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">м<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">и<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">т<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">ь<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">б<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">ю<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">(<div></div></td>
+				<td onclick="KeyStrokeHandler(this);">)<div></div></td>
+			</tr>
+			<tr>
+				<td colspan="2" id="engKey" class="special-btn left-bottom" onclick="EngLangOn();">EN</td>
+				<td colspan="7" onclick="Space();">space</td>
+				<td colspan="3" id="subKey2"  class="special-btn right-bottom" onclick="SubToggle();" data-pressed="false">X<sub>n</sub></td>
+			</tr>
+		</table>
+		<script type="text/javascript" src="@Url.Content("~/Scripts/customKeyboard.js")"></script>
+	</div>
+	</div>
+  </body>
+</html>

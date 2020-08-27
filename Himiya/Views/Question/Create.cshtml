@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Нове питання";
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+
+<div class="form-wrapper">
+    @using (Html.BeginForm())
+    {
+        <header class="table-caption clear-float">
+            <h3>@ViewBag.Title в тесті @ViewBag.TestName</h3>
+        </header>
+        @Html.Hidden("TestId", (object)ViewBag.TestId)
+        <label>Питання</label><textarea rows="10" name="Quest"></textarea>
+        <label>Правильна відповідь</label><input type="text" name="Answer">
+        <p class="info-message">* для введення нижнього індексу (наприклад, 
+            при введенні формул) потрібно помістити індекс чи групу індексів в []. 
+            Наприклад: <strong>H[2]SO[4]</strong> буде відображатись 
+                       <strong>H<sub>2</sub>SO<sub>4</sub></strong></p>
+        <label>@Html.CheckBox("IgnoreCase", false)Ігнорувати регістр</label>
+        @Html.Hidden("back_link", (object)ViewBag.BackLink)
+        <div class="table-footer clear-float">
+            <input type="submit" value="Створити">
+            <a class="cancel-btn" href="@ViewBag.BackLink">Відмінити</a>
+        </div>
+    }
+</div>
+

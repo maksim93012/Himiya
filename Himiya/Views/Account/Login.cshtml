@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Вхід до системи";
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+    <div class="form-wrapper">
+        @using (Html.BeginForm())
+        {
+            <header class="table-caption clear-float">
+                <h3>@ViewBag.Title</h3>
+            </header>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.TextBox("login", "", new { placeholder = "Логін" });
+            @Html.Password("password", "", new { placeholder = "Пароль" })
+            <div class="table-footer clear-float">
+                <input type="submit" value="Ввійти">
+            </div>
+        }
+    </div>

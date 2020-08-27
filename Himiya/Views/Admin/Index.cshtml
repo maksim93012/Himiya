@@ -1,0 +1,89 @@
+﻿@model Himiya.Models.Group
+
+@{
+    ViewBag.Title = "Групи тестів";
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+
+<div class="row">
+    <h2 class="description-head">Групи тестів</h2>
+    <a class="create-btn" href="@Url.Action("Create", "Group", new { intoId = 0, back_link = ViewBag.BackLink})">Створити нову групу</a>
+</div>
+@if (Model != null)
+{
+<header class="table-caption clear-float">
+    <h3>Група тестів: @Model.Name</h3>
+    <div class="actions">
+        <a href="@Url.Action("Update","Group", new { id = Model.Id, back_link = ViewBag.BackLink })">Переіменувати</a>&nbsp;|&nbsp;<a href="@Url.Action("Delete","Group", new { id = Model.Id , back_link=ViewBag.BackLink})">Видалити групу</a>
+    </div>
+</header>
+if (Model.Tests.Count() > 0)
+{
+<table>
+    <tr>
+        <th>№</th>
+        <th>Найменування тесту</th>
+        <th>Дано часу</th>
+        <th>Питань в тесті</th>
+        <th>Балів за питання</th>
+        <th>Питань в базі</th>
+        <th>Дії</th>
+    </tr>
+    @foreach (var tst in Model.Tests)
+    {
+        if (tst.QuestsCount > tst.Questions.Count())
+        {
+            <tr class="error">
+                <td>@tst.Id</td>
+                <td>@tst.Name</td>
+                <td>@tst.Duration</td>
+                <td>@tst.QuestsCount</td>
+                <td>@tst.PriceForQuest</td>
+                <td>@tst.Questions.Count()</td>
+                <td class=actions><a href="@Url.Action("DetailsTest", new { id=tst.Id})">Детальніше</a> | <a href="@Url.Action("Delete","Test", new { id = tst.Id, back_link=ViewBag.BackLink})">Видалити</a></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>@tst.Id</td>
+                <td>@tst.Name</td>
+                <td>@tst.Duration</td>
+                <td>@tst.QuestsCount</td>
+                <td>@tst.PriceForQuest</td>
+                <td>@tst.Questions.Count()</td>
+                <td class=actions><a href="@Url.Action("DetailsTest", new { id=tst.Id})">Детальніше</a> | <a href="@Url.Action("Delete","Test", new { id = tst.Id, back_link=ViewBag.BackLink})">Видалити</a></td>
+            </tr>
+        }
+    }
+</table>
+}
+else
+{
+    <p class="info-message">В цій групі тестів немає жодного тесту</p>
+}
+<div class="table-footer clear-float">
+    <nav class="prev-next">@Html.ActionLink("<<попередня", "Index", new { index = (int)ViewBag.CurrentNum - 1 }) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("наступна>>", "Index", new { index = (int)ViewBag.CurrentNum + 1 })</nav>
+    <nav class="page-list">
+        <ul>
+            @for (int i = 0; i <= ViewBag.GroupsMaxIndex; i++)
+            {
+                if (i == (int)ViewBag.CurrentNum)
+                {
+                    <li class="current-page">@Html.ActionLink((i + 1).ToString(), "Index", new { index = i })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink((i + 1).ToString(), "Index", new { index = i })</li>
+                }
+            }
+        </ul>
+    </nav>
+    <a class="create-btn" href="@Url.Action("Create","Test", new { intoId = Model.Id, back_link=ViewBag.BackLink})">Створити новий тест</a>
+</div>
+}
+else
+{
+    <p class="info-message">Немає жодної групи.</p>
+}
+

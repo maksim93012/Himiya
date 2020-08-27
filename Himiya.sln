@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Himiya", "Himiya\Himiya.csproj", "{5D42C5F4-5709-4F73-95A3-B29B0D04AA9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HimiyaUnitTests", "HimiyaUnitTests\HimiyaUnitTests.csproj", "{36B676BA-263C-45D2-A8A2-295216AC25E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D42C5F4-5709-4F73-95A3-B29B0D04AA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D42C5F4-5709-4F73-95A3-B29B0D04AA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D42C5F4-5709-4F73-95A3-B29B0D04AA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D42C5F4-5709-4F73-95A3-B29B0D04AA9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B676BA-263C-45D2-A8A2-295216AC25E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B676BA-263C-45D2-A8A2-295216AC25E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B676BA-263C-45D2-A8A2-295216AC25E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B676BA-263C-45D2-A8A2-295216AC25E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEA6C498-DBCC-468F-AF3C-F23C4BAF2617}
+	EndGlobalSection
+EndGlobal

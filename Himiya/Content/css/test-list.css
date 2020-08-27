@@ -1,0 +1,94 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1.2;
+	font: 1rem Arial, sans-serif;
+}
+sub{font-size: 0.7rem;}
+html{
+	background: rgb(229,229,229);
+}
+.wrapper{
+	max-width: 1200px;
+	padding: 10px 5px 0 5px;
+	margin: 0 auto;
+}
+header{
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 20px;
+    background: rgb(25, 190, 155);
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 2px;
+}
+header img{
+    width: 25%;
+}
+ul{
+    list-style: none;
+}
+li{
+    margin-bottom: 2px;
+}
+a{
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    color: rgb(52, 72, 96);
+    background: white;
+    text-decoration: none;
+}
+a:hover{
+    background: rgb(240,240,240);
+}
+a img{
+    width: 1.5rem;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+li:last-child a{
+    border-radius: 0 0 5px 5px;
+}
+
+.name-input{
+    background: white;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    color: rgb(52, 72, 96);
+    text-align: center;
+}
+.name-input input{
+    display: block;
+    overflow: hidden;
+	width: 20rem;
+	font-size: 1rem;
+	background: white;
+	color: rgb(52,73,94);
+	border-radius: 5px;
+	border: 1px solid rgb(25, 190, 155);
+    padding: 10px 2%;
+    margin: 10px auto;
+}
+.name-input button{
+	background: rgb(52, 72, 96);
+	border-radius: 5px;
+	padding: 10px 15px;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.name-input button:hover{
+	background: rgb(53,171,221);
+}

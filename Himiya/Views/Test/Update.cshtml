@@ -1,0 +1,25 @@
+﻿@model Himiya.Models.Test
+
+@{
+    ViewBag.Title = "Редагувати тест";
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+
+    <div class="form-wrapper">
+        @using (Html.BeginForm())
+        {
+            <header class="table-caption clear-float">
+                <h3>Редагування тесту @Model.Name</h3>
+            </header>
+            <label>Найменування тесту</label><input type="text" name="Name" value="@Model.Name">
+            <label>Часу на тест (сек)</label><input type="number" name="Duration" value="@Model.Duration" min="10">
+            <label>Питань в тесті</label><input type="number" name="QuestsCount" value="@Model.QuestsCount" min="1">
+            <label>Бал за питання</label><input type="text" value="@Model.PriceForQuest" name="PriceForQuest">
+            @Html.Hidden("GroupId", Model.Id)
+    <div class="table-footer clear-float">
+        <input type="submit" value="Зберегти зміни">
+        <a class="cancel-btn" href="@ViewBag.BackLink">Відмінити</a>
+    </div>
+        }
+    </div>
+

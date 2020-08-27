@@ -1,0 +1,22 @@
+﻿@model Himiya.Models.Group
+
+@{
+    ViewBag.Title = "Переіменувати групу";
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+
+    <div class="form-wrapper">
+        @using (Html.BeginForm())
+        {
+            <header class="table-caption clear-float">
+                <h3>@ViewBag.Title: @Model.Name</h3>
+            </header>
+            if (Model != null) { Html.HiddenFor(x => x.Id); }
+            <input type="text" name="Name" placeholder="Нове ім'я групи">
+            <div class="table-footer clear-float">
+                <input type="submit" value="Переіменувати">
+                <a class="cancel-btn" href="@ViewBag.BackLink">Відмінити</a>
+            </div>
+        }
+    </div>
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Himiya.Models.Group>
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <title>Тести з хімії</title>
+        <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon.png")">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="@Url.Content("~/Content/css/test-list.css")">
+        <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header><h1><img src="@Url.Content("~/Content/index-ico.svg")"><div>Тести з хімії</div></h1></header>
+            <div class=name-input>
+                <p>Вкажіть своє Ім'я та Прізвище</p>
+                <input type="text" placeholder="Ім'я" id="firstName">
+                <input type="text" placeholder="Прізвище" id="lastName">
+                <button onclick="saveName();">Підтвердити</button>
+            </div>
+            <script>
+                function saveName() {
+                    if ($('#firstName').val().trim().length >=2 && $('#lastName').val().trim().length >= 2) {
+                        localStorage.user = $('#firstName').val().trim();
+                        localStorage.user += " " + $('#lastName').val().trim();
+                        $('.name-input').toggle();
+                        $('nav').toggle();
+                    }
+                }
+            </script>
+            <nav style="display: none;">
+                <ul>
+                    @foreach (var group in Model)
+                    {
+                        <li><a href="@Url.Action("TestList", new { id=group.Id})" onclick="localStorage.group = '@group.Name';">@group.Name<img src="@Url.Content("~/Content/arrow.svg")"></a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+        <script>
+            //delete (localStorage.user);
+            if (localStorage.user) {
+                $('.name-input').toggle();
+                $('nav').toggle();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+﻿@model Himiya.Models.Test
+
+@using Himiya.Helpers
+
+@{
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+
+<div class="row">
+    <h2 class="description-head">Тест: @Model.Name, час на проходження @Model.Duration сек, @Model.QuestsCount питання на тест, @Model.PriceForQuest бала за питання</h2>
+    <a class="create-btn" href="@Url.Action("Update","Test", new { id=Model.Id, back_link = Url.Action("DetailsTest", "Admin", new { id=Model.Id})})">Редагувати</a>
+</div>
+<header class="table-caption clear-float">
+    <h3>Усі питання тесту</h3>
+</header>
+<table>
+    <tr>
+        <th>№</th>
+        <th>Питання</th>
+        <th>Відповідь</th>
+        <th>Ігнорувати регістр</th>
+        <th>Дії</th>
+    </tr>
+    @foreach (var q in Model.Questions)
+    {
+        <tr>
+            <td>@q.Id</td>
+            <td>@Html.TextWithFormulas(q.Quest)</td>
+            <td>@Html.VerifiedAnswer(Html.TextWithFormulas(q.Answer).ToHtmlString())</td>
+            <td>
+                @if (q.IgnoreCase)
+                {
+                    <span>так</span>
+                }
+                else
+                {
+                    <span>ні</span>
+                }
+            </td>
+      
+                  <td class=actions><a href="@Url.Action("Update", "Question", new { id=q.Id, back_link = Url.Action("DetailsTest", "Admin", new { id=Model.Id})})">Редагувати</a>
+            | <a href="@Url.Action("Delete","Question", new { id=q.Id,back_link = Url.Action("DetailsTest", "Admin", new { id=Model.Id})})">Видалити</a></td>
+        </tr>
+    }
+</table>
+<div class="table-footer clear-float">
+    <a class="create-btn" href="@Url.Action("Create","Question", new { intoId = Model.Id, back_link = Url.Action("DetailsTest", "Admin", new { id=Model.Id})})">Створити нове питання</a>
+</div>
+

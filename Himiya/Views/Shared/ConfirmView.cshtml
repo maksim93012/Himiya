@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Підтвердження операції";
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+
+<div class="form-wrapper">
+    @using (Html.BeginForm())
+    {
+        <header class="table-caption clear-float">
+            <h3>@ViewBag.Title</h3>
+        </header>
+            @Html.Hidden("id", (object)ViewBag.Id)
+            @Html.Hidden("cascade", (object)true)
+            @Html.Hidden("back_link", (object)ViewBag.BackLink)
+<div class="table-footer clear-float">
+    <p class="info-message">@ViewBag.Info</p>
+    <input type="submit" value="Підтвердити">
+    <a class="cancel-btn" href="@ViewBag.BackLink">Відмінити</a>
+</div>
+    }
+</div>

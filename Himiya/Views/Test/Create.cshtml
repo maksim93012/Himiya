@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Створити новий тест";
+    Layout = "~/Views/Admin/_LayoutPageAdmin.cshtml";
+}
+
+    <div class="form-wrapper">
+        @using (Html.BeginForm())
+        {
+            <header class="table-caption clear-float">
+                <h3>Створити новий тест в групі @ViewBag.GroupName</h3>
+            </header>
+            <label>Найменування тесту</label><input type="text" name="Name">
+            <label>Часу на тест (сек)</label><input type="number" name="Duration" value="120" min="10">
+            <label>Питань в тесті</label><input type="number" name="QuestsCount" value="12" min="1">
+            <label>Бал за питання</label>
+            <input type="text" value="1,5" name="PriceForQuest">
+            @Html.Hidden("GroupId", (int)ViewBag.GroupId)
+            @Html.Hidden("back_link", (string)ViewBag.BackLink)
+            <div class="table-footer clear-float">
+                <input type="submit" value="Створити тест">
+                <a class="cancel-btn" href="@ViewBag.BackLink">Відмінити</a>
+            </div>
+        }
+    </div>
+

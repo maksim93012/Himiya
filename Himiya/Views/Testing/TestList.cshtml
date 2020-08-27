@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Himiya.Models.Test>
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <title>Тести з хімії</title>
+        <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon.png")">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="@Url.Content("~/Content/css/test-list.css")">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header><h1>@ViewBag.GroupName</h1></header>
+            <nav>
+                <ul>
+                    @foreach(var t in Model)
+                    {
+                        <li><a href="@Url.Action("Test", new { id = t.Id })">@t.Name<img src="@Url.Content("~/Content/arrow.svg")"></a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </body>
+</html>

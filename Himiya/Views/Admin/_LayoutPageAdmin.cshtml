@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/admin.css")">
+</head>
+<body>
+    <header class="main-header clear-float">
+        <div class="row">
+            <h1>Тести з хімії</h1>
+            <div class="exit-link">
+                <a href="@Url.Action("Logout", "Account")">Вихід</a>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        @RenderBody()
+    </div>
+    <footer class="main-footer">
+        @Html.ActionLink("Результати тестів", "Results", "Admin") |
+        @Html.ActionLink("Групи", "Index", "Admin")
+    </footer>
+</body>
+</html>
